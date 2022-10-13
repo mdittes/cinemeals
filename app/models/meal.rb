@@ -1,5 +1,5 @@
 class Meal < ApplicationRecord
     belongs_to :user
     belongs_to :movie
-    has_many :tags
+    has_many :tags, dependent: :destroy
 end

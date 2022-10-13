@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
-  resources :tags
-  resources :meals
+  resources :tags, only: [:index, :show, :create, :destroy]
+  #resources :meals
   resources :movies
-  resources :users
+  #resources :users
 
-
+  post '/signup', to: 'users#create'
+  post '/login', to: 'users#login'
+  get '/profile', to: 'users#show'
+  post '/logout', to: 'users#logout'
+  get '/cinemeals', to: 'meals#index'
+  get '/cinemeals/:id', to: 'meals#show'
+  post '/cinemeals', to: 'meals#create'
+  patch '/cinemeals/:id', to: 'meals#update'
+  delete '/cinemeals/:id', to: 'meals#destroy'
 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end
