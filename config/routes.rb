@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :tags
+  resources :meals
+  resources :movies
+  resources :users
 
 
 
