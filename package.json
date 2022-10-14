@@ -2,12 +2,17 @@
     "name": "heroku-deploy",
     "description": "Build scripts for Heroku",
     "engines": {
-      "node": "16.15.1"
+        "node": "16.15.1"
     },
     "scripts": {
-      "clean": "rm -rf public",
-      "build": "npm install --prefix client && npm run build --prefix client",
-      "deploy": "cp -a client/build/. public/",
-      "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+        "clean": "rm -rf public",
+        "build": "npm install --prefix client && npm run build --prefix client",
+        "deploy": "cp -a client/build/. public/",
+        "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+    },
+    "dependencies": {
+        "react-router-dom": "^6.4.2",
+        "semantic-ui-css": "^2.5.0",
+        "semantic-ui-react": "^2.1.3"
     }
-  }
+}
