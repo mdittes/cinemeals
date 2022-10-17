@@ -7,9 +7,9 @@ import Login from './components/Login';
 function App() {
   return (
     <div className="App">
-      <NavBar />
       <h1>CineMeals</h1>
-      <Login />
+      <NavBar />
+      {/* <Login /> */}
 
     </div>
   );

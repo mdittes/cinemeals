@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { Button, Form, Grid, Header, Image, Message, Segment, Divider, Icon } from 'semantic-ui-react';
-import '../styles/Login.css'
+import '../styles/Login.css';
+import {useNavigate, Routes, Route} from 'react-router-dom';
+import Signup from './Signup'
 
 function Login() {
     const loginBody = {
@@ -10,6 +12,12 @@ function Login() {
 
     let [loginData, setLoginData] = useState({...loginBody})
     let [user, setUser] = useState({username: ''})
+
+    const navigate = useNavigate();
+
+    const routeChange = () => {
+        navigate('/signup');
+    }
 
     useEffect(() => {
         let token = localStorage.getItem('token')
@@ -51,6 +59,7 @@ function Login() {
                 localStorage.setItem('token', data.token)
                 setUser(data.user)
                 setLoginData(loginBody)
+                //navigate('/profile')
             }
         })
     }
@@ -66,7 +75,7 @@ function Login() {
     }
 
     return (
-        <Segment className='welcomeSegment' centered style={{maxWidth: 1200}}>
+        <Segment className='welcomeSegment' style={{maxWidth: 1200, align: 'center'}}>
             <Grid columns={2} stackable textAlign='center'>
             <Divider vertical></Divider>
                 <Grid.Row verticalAlign='middle'>
@@ -100,7 +109,7 @@ function Login() {
                                 </Segment>
                             </Form>
                             <Message>
-                                New to us? <a href='/signup'>Sign Up</a>
+                                New to us? <Button onClick={routeChange}>Sign Up</Button>
                             </Message>
                         </Grid.Column>
                     </Grid>
@@ -113,6 +122,9 @@ function Login() {
                         </Grid.Column>
                 </Grid.Row>
             </Grid>
+            {/* <Routes>
+                <Route path="/signup" element={<Signup />} />
+            </Routes> */}
         </Segment>
     )
 }
