@@ -4,20 +4,20 @@ class UsersController < ApplicationController
     #for '/signup':
     def create 
         @user = User.create!(user_params)
-        token = JWT.encode({user_id: @user.id}, 'secret')
+        token = encode_token({user_id: @user.id})
         render json: {user: @user, token: token}
     end
 
     #for '/profile':
     def show 
-        render json: {user: @current_user}
+        render json: @current_user
     end
 
     #for '/login':
     def login 
         @user = User.find_by(username: params[:username])
-        if (@user && @user.authenticate(params[:password]))
-            token = JWT.encode({user_id: @user.id}, 'secret')
+        if @user && @user.authenticate(params[:password])
+            token = encode_token({user_id: @user.id})
             render json: {user: @user, token: token}
         end
     end

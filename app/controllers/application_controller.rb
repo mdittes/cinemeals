@@ -2,21 +2,42 @@ class ApplicationController < ActionController::API
     #rescue_from User::NotAuthorized, with: :deny_access 
     rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_response
-    #before_action :authorized 
+    before_action :authorized 
+    # skip_before_action :verify_authenticity_token
+
+    def auth_header 
+        request.headers['Authorization']
+    end
+
+    def encode_token(payload)
+        JWT.encode(payload, 'secret')
+    end
+
+    def decoded_token
+        if auth_header
+            token = auth_header.split(' ')[1]
+            begin 
+                JWT.decode(token, 'secret', true, algorithm: 'HS256')
+            rescue JWT::DecodeError
+                nil
+            end
+        end
+    end
 
     def logged_in_user 
-        headers = request.headers['Authorization']
-        if(headers)
-            token = headers.split(' ')[1]
-            cur_id = JWT.decode(token, 'secret', true, algorithm: 'HS256')
-            @current_user = User.find_by(id: cur_id[0]["user_id"])
-            @current_user
+        if decoded_token
+            user_id = decoded_token[0]['user_id']
+            @current_user = User.find_by(id: user_id)
         end
+    end
+
+    def logged_in?
+        !!logged_in_user
     end
 
     def authorized
         puts "checking... #{logged_in_user}"
-        render json: {message: "Please log in"}, status: :unauthorized unless !!logged_in_user
+        render json: {message: "Please log in"}, status: :unauthorized unless logged_in?
     end
 
     private 
@@ -30,7 +51,7 @@ class ApplicationController < ActionController::API
     end
 
     def invalid_response(exception)
-        render json: {errors: exception.record.errors.full_messages}, status: :unprocessable_entity
+        redirect_back_or_to root_url, alert: exception.record.errors.full_messages.to_sentence
     end
 
 end

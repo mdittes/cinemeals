@@ -7,7 +7,7 @@ function Login() {
         username: '',
         password: ''
     }
-    
+
     let [loginData, setLoginData] = useState({...loginBody})
     let [user, setUser] = useState({username: ''})
 
@@ -47,9 +47,22 @@ function Login() {
         })
         .then(res => res.json())
         .then(data => {
-            setUser(data.user)
-            localStorage.setItem('token', data.token)
+            if(data.token){
+                localStorage.setItem('token', data.token)
+                setUser(data.user)
+                setLoginData(loginBody)
+            }
         })
+    }
+
+    //need logout button or route (where should this fnx live?)
+    function logout() {
+        fetch('http://localhost:3000/logout', {
+            method: 'POST'
+        })
+        .catch(err => console.log(err))
+        localStorage.removeItem('token')
+        setUser({username: ''})
     }
 
     return (
