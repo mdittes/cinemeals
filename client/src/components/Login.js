@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { Button, Form, Grid, Header, Image, Message, Segment, Divider, Icon } from 'semantic-ui-react';
 import '../styles/Login.css';
-import {useNavigate, Routes, Route} from 'react-router-dom';
-import Signup from './Signup'
+import {useNavigate} from 'react-router-dom';
+//import Signup from './Signup'
 
 function Login() {
     const loginBody = {
@@ -32,6 +32,7 @@ function Login() {
                 console.log(data)
                 if(data.user){
                     setUser(data.user)
+                    navigate('/profile')
                 }
             })
         }
@@ -59,23 +60,23 @@ function Login() {
                 localStorage.setItem('token', data.token)
                 setUser(data.user)
                 setLoginData(loginBody)
-                //navigate('/profile')
+                navigate('/profile')
             }
         })
     }
 
     //need logout button or route (where should this fnx live?)
-    function logout() {
-        fetch('http://localhost:3000/logout', {
-            method: 'POST'
-        })
-        .catch(err => console.log(err))
-        localStorage.removeItem('token')
-        setUser({username: ''})
-    }
+    // function logout() {
+    //     fetch('http://localhost:3000/logout', {
+    //         method: 'POST'
+    //     })
+    //     .catch(err => console.log(err))
+    //     localStorage.removeItem('token')
+    //     setUser({username: ''})
+    // }
 
     return (
-        <Segment className='welcomeSegment' style={{maxWidth: 1200, align: 'center'}}>
+        <Segment className='ui container center aligned' style={{maxWidth: 1200, align: 'center'}}>
             <Grid columns={2} stackable textAlign='center'>
             <Divider vertical></Divider>
                 <Grid.Row verticalAlign='middle'>
@@ -109,7 +110,7 @@ function Login() {
                                 </Segment>
                             </Form>
                             <Message>
-                                New to us? <Button onClick={routeChange}>Sign Up</Button>
+                                New to CineMeals? <Button onClick={routeChange}>Sign Up</Button>
                             </Message>
                         </Grid.Column>
                     </Grid>
