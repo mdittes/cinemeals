@@ -9,7 +9,7 @@ import Faves from './Faves'
 import Login from './Login'
 import Signup from './Signup'
 
-function NavBar() {
+function NavBar( {cur_user} ) {
     const [user, setUser] = useState({username: ''})
 
     function logout() {
@@ -38,12 +38,12 @@ function NavBar() {
                 />
             <Menu.Item
                 link className="right item" name='Log In' href="/login">
-                    <Button onClick={logout} >Log In</Button>
+                    <Button onClick={logout} >{user ? "Log In" : "Log Out"}</Button>
             </Menu.Item>
         </Menu>
         <Routes>
             <Route path="/homepage" element={<Homepage />} />
-            <Route path="/profile" element={<Profile user={user}/>} />
+            <Route path="/profile" element={<Profile user={cur_user}/>} />
             <Route path="/cinemeals" element={<Cinemeals />} />
             <Route path="/faves" element={<Faves />} />
             <Route path="/login" element={<Login />} />

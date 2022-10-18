@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { Button, Form, Grid, Header, Image, Message, Segment, Divider, Icon } from 'semantic-ui-react';
 import '../styles/Login.css';
 import {useNavigate} from 'react-router-dom';
@@ -18,25 +18,6 @@ function Login() {
     const routeChange = () => {
         navigate('/signup');
     }
-
-    useEffect(() => {
-        let token = localStorage.getItem('token')
-        if(token && !user.username){
-            fetch('http://localhost:3000/profile', {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if(data.user){
-                    setUser(data.user)
-                    navigate('/profile')
-                }
-            })
-        }
-    }, [])
 
     function loginChange(e) {
         setLoginData({
@@ -110,7 +91,7 @@ function Login() {
                                 </Segment>
                             </Form>
                             <Message>
-                                New to CineMeals? <Button onClick={routeChange}>Sign Up</Button>
+                                New to CineMeals? {' '} <Button onClick={routeChange}>Sign Up</Button>
                             </Message>
                         </Grid.Column>
                     </Grid>
@@ -123,9 +104,6 @@ function Login() {
                         </Grid.Column>
                 </Grid.Row>
             </Grid>
-            {/* <Routes>
-                <Route path="/signup" element={<Signup />} />
-            </Routes> */}
         </Segment>
     )
 }
