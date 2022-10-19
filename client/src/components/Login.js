@@ -4,14 +4,14 @@ import '../styles/Login.css';
 import {useNavigate} from 'react-router-dom';
 //import Signup from './Signup'
 
-function Login() {
+function Login({updateUserLogin}) {
     const loginBody = {
         username: '',
         password: ''
     }
 
     let [loginData, setLoginData] = useState({...loginBody})
-    let [user, setUser] = useState({username: ''})
+    //let [user, setUser] = useState({username: ''})
 
     const navigate = useNavigate();
 
@@ -39,7 +39,7 @@ function Login() {
         .then(data => {
             if(data.token){
                 localStorage.setItem('token', data.token)
-                setUser(data.user)
+                updateUserLogin(data.user)
                 setLoginData(loginBody)
                 navigate('/profile')
             }
