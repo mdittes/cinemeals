@@ -12,6 +12,9 @@ import {Routes, Route} from 'react-router-dom'
 function App() {
   const [user, setUser] = useState({username: ''});
   //const [curUser, setCurUser] = useState([])
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  //const navigate = useNavigate();
 
   useEffect(() => {
     let token = localStorage.getItem('token')
@@ -28,13 +31,14 @@ function App() {
             //console.log(data)
             if(data.user){
                 setUser(data.user)
+                setIsLoggedIn(true)
                 //navigate('/profile')
             }
         })
     }
   }, [])
   
-  function updateUserLogin(user) {
+  function updateUserLogin(data) {
     setUser({username: ''})
   }
 
@@ -43,14 +47,14 @@ function App() {
         <h1>
           CineMeals
         </h1>
-      <NavBar cur_user={user}/>
+      <NavBar cur_user={user} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
             <Route path="/" element={<Homepage />} />
-            <Route path="/profile" element={<Profile updateUserLogin={updateUserLogin} />} />
+            <Route path="/profile" element={<Profile cur_user={user} updateUserLogin={updateUserLogin} />} />
             <Route path="/cinemeals" element={<Cinemeals />} />
             <Route path="/faves" element={<Faves />} />
-            <Route path="/login" element={<Login updateUserLogin={updateUserLogin}/>} />
-            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} updateUserLogin={updateUserLogin}/>} />
+            <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} />} />
       </Routes>
       {/* <Login updateUserLogin={updateUserLogin}/> */}
 

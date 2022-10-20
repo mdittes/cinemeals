@@ -1,8 +1,8 @@
 import React from 'react';
 //import {Card, Image} from 'semantic-ui-react'
 
-function Profile( {updateUserLogin} ){
-    //console.log(updateUserLogin)
+function Profile( {updateUserLogin, user} ){
+    //console.log(updateUserLogin())
 
     return (
         <>

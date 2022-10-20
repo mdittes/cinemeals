@@ -2,14 +2,8 @@ import React, {useState} from 'react';
 import {Menu, Button} from 'semantic-ui-react';
 import '../styles/NavBar.css';
 import { NavLink } from 'react-router-dom'
-// import Homepage from './Homepage'
-// import Profile from './Profile'
-// import Cinemeals from './Cinemeals'
-// import Faves from './Faves'
-// import Login from './Login'
-// import Signup from './Signup'
 
-function NavBar( {cur_user} ) {
+function NavBar( {cur_user, isLoggedIn, setIsLoggedIn} ) {
     const [user, setUser] = useState({username: ''})
 
     function logout() {
@@ -19,6 +13,7 @@ function NavBar( {cur_user} ) {
         .catch(err => console.log(err))
         localStorage.removeItem('token')
         setUser({username: ''})
+        setIsLoggedIn(false)
     }
 
     return (
@@ -38,17 +33,9 @@ function NavBar( {cur_user} ) {
                 />
             <Menu.Item
                 link className="right item" name='Log In' as={NavLink} to="/login">
-                    <Button onClick={logout} >{user ? "Log In" : "Log Out"}</Button>
+                    <Button onClick={logout} >{isLoggedIn ? "Log Out" : "Log In"}</Button>
             </Menu.Item>
         </Menu>
-        {/* <Routes>
-            <Route path="/homepage" element={<Homepage />} />
-            <Route path="/profile" element={<Profile user={cur_user}/>} />
-            <Route path="/cinemeals" element={<Cinemeals />} />
-            <Route path="/faves" element={<Faves />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-        </Routes> */}
         </>
     )
 }

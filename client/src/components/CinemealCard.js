@@ -1,5 +1,5 @@
 import React from 'react';
-import {Item, Image, Label, Icon} from 'semantic-ui-react'
+import {Item, Image, Label} from 'semantic-ui-react'
 import '../styles/CinemealCard.css'
 
 function CinemealCard( {meal} ) {
@@ -15,7 +15,7 @@ function CinemealCard( {meal} ) {
                 <span>{meal.movie.title}</span>
                 </Item.Meta>
                 <Item.Description>{notes}</Item.Description>
-                <Image style={{height: 150, width: 150, alignItems: 'center'}} src={image} />
+                <Image style={{height: 150, width: 150, alignItems: 'center'}} src={image} centered/>
                 <Item.Extra>
                 <Label icon='film' content={meal.movie.genre}/>
                 <Label icon='food' content={course}/>

@@ -25,6 +25,8 @@ function Cinemeals() {
     // let [createTagData, setCreateTagData] = useState({...createTagBody})
     const [meals, setMeals] = useState([])
     const [open, setOpen] = useState(false)
+    const [selectedGenre, setSelectedGenre] = useState('')
+    const [selectedCourse, setSelectedCourse] = useState('')
 
     useEffect(() => {
         fetch('http://localhost:3000/cinemeals')
@@ -42,16 +44,16 @@ function Cinemeals() {
     const movieChange = (e) => {
         setCreateMovieData({
             ...createMovieData,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
         })
     }
 
-    const mealChange = (e) => {
-        setCreateMealData({
-            ...createMealData,
-            [e.target.name]: e.target.value
-        })
-    }
+    // const mealChange = (e) => {
+    //     setCreateMealData({
+    //         ...createMealData,
+    //         [e.target.name]: e.target.value
+    //     })
+    // }
 
     // const tagChange = (e) => {
     //     setCreateTagData({
@@ -60,21 +62,24 @@ function Cinemeals() {
     //     })
     // }
 
-    const createMealSubmit = (e) => {
+    const createMovieSubmit = (e) => {
         e.preventDefault()
-        fetch('http://localhost:3000/cinemeals', {
+        fetch('http://localhost:3000/movies', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(
                 createMovieData,
-                createMealData,
+                //createMealData,
                 //createTagData
             )
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data)
+            setCreateMovieData(data)
+        })
     }
 
     const genreOptions = [
@@ -101,7 +106,7 @@ function Cinemeals() {
 
     return (
         <>
-        <h1>Cinemeals</h1>
+        <h1>CineMeals</h1>
         <Modal
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
@@ -111,8 +116,8 @@ function Cinemeals() {
             <Modal.Header className="center aligned header">Create a CineMeal</Modal.Header>
             <Modal.Content>
                 <Form
-                    onChange={e => {movieChange(e); mealChange(e)}} 
-                    onSubmit={e => createMealSubmit(e)}
+                    onChange={e => movieChange(e)} //onChange={e => {movieChange(e); mealChange(e)}} 
+                    onSubmit={e => createMovieSubmit(e)}
                 >
                 <Form.Group unstackable widths={2}>
                 <Form.Field>
@@ -131,7 +136,8 @@ function Cinemeals() {
                         fluid
                         selection
                         options={genreOptions}
-                        value={createMovieData.genre}
+                        value={selectedGenre}
+                        onChange={(e, data) => setSelectedGenre(data.value)}
                     />
                 </Form.Field>
                 <Form.Field>
@@ -160,7 +166,8 @@ function Cinemeals() {
                         fluid
                         selection
                         options={courseOptions}
-                        value={createMealData.course}
+                        value={selectedCourse}
+                        onChange={(e, data) => setSelectedCourse(data.value)}
                     />
                 </Form.Field>
                 <Form.Field>
@@ -175,7 +182,7 @@ function Cinemeals() {
                 <Form.Field>
                     <label>Notes</label>
                     <Form.TextArea
-                        placeholder='Notes'
+                        placeholder='Want to include more info to complete the CineMeal experience? Link to a recipe, other activities to coordinate with the movie, or any other advice? Include it here!'
                         name='notes'
                         value={createMealData.notes}
                     />

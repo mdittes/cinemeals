@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Button, Form, Segment, Header, Icon} from 'semantic-ui-react'
 import {useNavigate} from 'react-router-dom';
 
-function Signup() {
+function Signup( {setIsLoggedIn} ) {
     const signupBody = {
         username: '',
         password: '',
@@ -37,7 +37,8 @@ function Signup() {
             setUser(data.user)
             setSignupData({...signupBody})
             if(data.token) {
-            navigate('/profile')
+                setIsLoggedIn(true)
+                navigate('/profile')
             }
         })
         .catch(err => console.log(err))

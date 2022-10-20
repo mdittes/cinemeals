@@ -2,9 +2,8 @@ import React, {useState} from 'react';
 import { Button, Form, Grid, Header, Image, Message, Segment, Divider, Icon } from 'semantic-ui-react';
 import '../styles/Login.css';
 import {useNavigate} from 'react-router-dom';
-//import Signup from './Signup'
 
-function Login({updateUserLogin}) {
+function Login({updateUserLogin, setIsLoggedIn}) {
     const loginBody = {
         username: '',
         password: ''
@@ -41,24 +40,15 @@ function Login({updateUserLogin}) {
                 localStorage.setItem('token', data.token)
                 updateUserLogin(data.user)
                 setLoginData(loginBody)
+                setIsLoggedIn(true)
                 navigate('/profile')
             }
         })
     }
 
-    //need logout button or route (where should this fnx live?)
-    // function logout() {
-    //     fetch('http://localhost:3000/logout', {
-    //         method: 'POST'
-    //     })
-    //     .catch(err => console.log(err))
-    //     localStorage.removeItem('token')
-    //     setUser({username: ''})
-    // }
-
     return (
         <Segment className='ui container center aligned' style={{maxWidth: 1200, align: 'center'}}>
-            <Grid columns={2} stackable textAlign='center'>
+            <Grid columns={2} stackable centered textAlign='center'>
             <Divider vertical></Divider>
                 <Grid.Row verticalAlign='middle'>
                     <Grid textAlign='center' style={{ height: '80vh' }} verticalAlign='middle'>
@@ -95,13 +85,15 @@ function Login({updateUserLogin}) {
                             </Message>
                         </Grid.Column>
                     </Grid>
-                        <Grid.Column>
-                            <Header icon>
+                    {/* <Grid> */}
+                        <Grid.Column >
+                            <Header icon textAlign="right">
                                 <Image src='https://www.clipartmax.com/png/middle/257-2578675_entertainment-film-reel-film-roll-movie-theate-film-reel-icon-png.png' style={{width: 100, height:100}}/>
                                 Welcome to CineMeals
                             </Header>
-                            <h3>Some text about what this site is</h3>
+                            <div className="center aligned">A site for film and food pairings. Need date night ideas? Want to spruce up a family night? Find out what movie will pair best with that steak you prepared or which cocktail goes best with your next Netflix binge. Sign up and share your own CineMeals pairings today!</div>
                         </Grid.Column>
+                    {/* </Grid> */}
                 </Grid.Row>
             </Grid>
         </Segment>
