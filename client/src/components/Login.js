@@ -3,7 +3,7 @@ import { Button, Form, Grid, Header, Image, Message, Segment, Divider, Icon } fr
 import '../styles/Login.css';
 import {useNavigate} from 'react-router-dom';
 
-function Login({updateUserLogin, setIsLoggedIn}) {
+function Login({setIsLoggedIn}) {
     const loginBody = {
         username: '',
         password: ''
@@ -38,7 +38,7 @@ function Login({updateUserLogin, setIsLoggedIn}) {
         .then(data => {
             if(data.token){
                 localStorage.setItem('token', data.token)
-                updateUserLogin(data.user)
+                //updateUserLogin(data.user)
                 setLoginData(loginBody)
                 setIsLoggedIn(true)
                 navigate('/profile')

@@ -23,7 +23,7 @@ function App() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'token': `${token}`
             }
         })
         .then(res => res.json())
@@ -38,9 +38,9 @@ function App() {
     }
   }, [])
   
-  function updateUserLogin(data) {
-    setUser({username: ''})
-  }
+  // function updateUserLogin(data) {
+  //   setUser({username: ''})
+  // }
 
   return (
     <div className="App">
@@ -50,10 +50,10 @@ function App() {
       <NavBar cur_user={user} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
             <Route path="/" element={<Homepage />} />
-            <Route path="/profile" element={<Profile cur_user={user} updateUserLogin={updateUserLogin} />} />
+            <Route path="/profile" element={<Profile user={user}  />} /> 
             <Route path="/cinemeals" element={<Cinemeals />} />
             <Route path="/faves" element={<Faves />} />
-            <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} updateUserLogin={updateUserLogin}/>} />
+            <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} />} />
       </Routes>
       {/* <Login updateUserLogin={updateUserLogin}/> */}

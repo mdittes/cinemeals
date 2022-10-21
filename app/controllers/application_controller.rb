@@ -6,7 +6,7 @@ class ApplicationController < ActionController::API
     # skip_before_action :verify_authenticity_token
 
     def auth_header 
-        request.headers['Authorization']
+        request.headers['token']
     end
 
     def encode_token(payload)
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::API
 
     def decoded_token
         if auth_header
-            token = auth_header.split(' ')[1]
+            token = auth_header
             begin 
                 JWT.decode(token, 'secret', true, algorithm: 'HS256')
             rescue JWT::DecodeError

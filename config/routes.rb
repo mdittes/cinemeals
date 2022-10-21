@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login'
   get '/profile', to: 'users#show'
   post '/logout', to: 'users#logout'
+  patch '/users/:id', to: 'users#update'
   get '/cinemeals', to: 'meals#index'
   get '/cinemeals/:id', to: 'meals#show'
   post '/cinemeals', to: 'meals#create'
