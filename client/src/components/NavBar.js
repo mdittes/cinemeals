@@ -20,7 +20,7 @@ function NavBar( {cur_user, isLoggedIn, setIsLoggedIn} ) {
         <>
         <Menu>
             <Menu.Item as={NavLink} to="/">
-                <img alt="logo" src="https://www.clipartmax.com/png/middle/257-2578675_entertainment-film-reel-film-roll-movie-theate-film-reel-icon-png.png"/>
+                <img alt="logo" src="https://i.imgur.com/dyVyJpx.jpeg"/>
             </Menu.Item>
             <Menu.Item 
                 link as={NavLink} name='Profile' to="/profile"

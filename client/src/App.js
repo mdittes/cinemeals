@@ -45,7 +45,7 @@ function App() {
   return (
     <div className="App">
         <h1>
-          CineMeals
+          <img height="50" width="50" src="https://i.imgur.com/dyVyJpx.jpeg"/>CineMeals
         </h1>
       <NavBar cur_user={user} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>

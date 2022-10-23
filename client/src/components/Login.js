@@ -88,7 +88,7 @@ function Login({setIsLoggedIn}) {
                     {/* <Grid> */}
                         <Grid.Column >
                             <Header icon textAlign="right">
-                                <Image src='https://www.clipartmax.com/png/middle/257-2578675_entertainment-film-reel-film-roll-movie-theate-film-reel-icon-png.png' style={{width: 100, height:100}}/>
+                                <Image src='https://i.imgur.com/dyVyJpx.jpeg' style={{width: 100, height:100}}/>
                                 Welcome to CineMeals
                             </Header>
                             <div className="center aligned">A site for film and food pairings. Need date night ideas? Want to spruce up a family night? Find out what movie will pair best with that steak you prepared or which cocktail goes best with your next Netflix binge. Sign up and share your own CineMeals pairings today!</div>
