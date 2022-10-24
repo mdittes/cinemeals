@@ -12,7 +12,9 @@ class MealsController < ApplicationController
     end
 
     def create 
-        @meal = Meal.create!(meals_params)
+        @movie = Movie.create!(movie_params)
+        debugger
+        @meal = Meal.create!(meals_params, movie_id: @movie.id)
         render json: @meal, status: :created
     end
 
@@ -32,6 +34,10 @@ class MealsController < ApplicationController
 
     def meals_params 
         params.permit(:name, :course, :image, :notes, :movie_id, :user_id)
+    end
+
+    def movie_params 
+        params.permit(:title, :genre, :poster)
     end
 
 end

@@ -48,12 +48,12 @@ function Cinemeals() {
         })
     }
 
-    // const mealChange = (e) => {
-    //     setCreateMealData({
-    //         ...createMealData,
-    //         [e.target.name]: e.target.value
-    //     })
-    // }
+    const mealChange = (e) => {
+        setCreateMealData({
+            ...createMealData,
+            [e.target.name]: e.target.value
+        })
+    }
 
     // const tagChange = (e) => {
     //     setCreateTagData({
@@ -62,24 +62,43 @@ function Cinemeals() {
     //     })
     // }
 
-    const createMovieSubmit = (e) => {
+    const createMealSubmit = (e) => {
         e.preventDefault()
-        fetch('http://localhost:3000/movies', {
+        let token = localStorage.getItem('token')
+        fetch('http://localhost:3000/cinemeals', {
             method: 'POST',
             headers: {
+                "token": `${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(
                 createMovieData,
-                //createMealData,
-                //createTagData
+                createMealData
             )
         })
         .then(res => res.json())
         .then(data => {
             console.log(data)
             setCreateMovieData(data)
-        })
+            setCreateMealData(data)
+            // return(
+            //     fetch('http://localhost:3000/cinemeals', {
+            //         method: 'POST',
+            //         headers: {
+            //             "token": `${token}`,
+            //             'Content-Type': 'application/json'
+            //         },
+            //         body: JSON.stringify(
+            //             createMealData
+            //             )
+            //         })
+            //         .then(res => res.json())
+            //         .then(data => {
+            //             console.log(data)
+            //             setCreateMealData(data)
+            //         })
+            //         )
+                })
     }
 
     const genreOptions = [
@@ -116,8 +135,8 @@ function Cinemeals() {
             <Modal.Header className="center aligned header">Create a CineMeal</Modal.Header>
             <Modal.Content>
                 <Form
-                    onChange={e => movieChange(e)} //onChange={e => {movieChange(e); mealChange(e)}} 
-                    onSubmit={e => createMovieSubmit(e)}
+                    onChange={e => {movieChange(e); mealChange(e)}} //onChange={e => movieChange(e)}
+                    // onSubmit={e => createMovieSubmit(e)}
                 >
                 <Form.Group unstackable widths={2}>
                 <Form.Field>
@@ -130,6 +149,7 @@ function Cinemeals() {
                 </Form.Field>
                 <Form.Field>
                     <label>Movie Genre</label>
+                    <Form.Input>
                     <Dropdown
                         placeholder='Movie Genre'
                         name='genre'
@@ -139,6 +159,7 @@ function Cinemeals() {
                         value={selectedGenre}
                         onChange={(e, data) => setSelectedGenre(data.value)}
                     />
+                    </Form.Input>
                 </Form.Field>
                 <Form.Field>
                     <label>Movie Poster</label>
@@ -160,6 +181,7 @@ function Cinemeals() {
                 </Form.Field>
                 <Form.Field>
                     <label>Course</label>
+                    <Form.Input>
                     <Dropdown
                         placeholder='Course'
                         name='course'
@@ -169,6 +191,7 @@ function Cinemeals() {
                         value={selectedCourse}
                         onChange={(e, data) => setSelectedCourse(data.value)}
                     />
+                    </Form.Input>
                 </Form.Field>
                 <Form.Field>
                     <label>Food/Drink Image</label>
@@ -196,7 +219,7 @@ function Cinemeals() {
                 <Button
                     color='blue'
                     type='submit'
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => {createMealSubmit(e); setOpen(false)}}
                     positive
                 >Create
                 </Button>
@@ -204,9 +227,9 @@ function Cinemeals() {
         </Modal>
             <div style={{display:"flex", flexWrap: "wrap", width:"100vw", alignItems:"center", justifyContent:"center"}}>
                 <div style={{display:"flex", flexWrap:"wrap", width:"80vw", justifyContent:"center", alignContent:"center", gap:"2rem"}}>
-                    <div>
+                    {/* <div> */}
                         {renderMeals}
-                    </div>
+                    {/* </div> */}
                 </div>
              </div>
         </>

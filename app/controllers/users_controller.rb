@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :authorized, only: [:show]
+    before_action :authorized, only: [:show, :update]
 
     #for '/signup':
     def create 
@@ -28,28 +28,28 @@ class UsersController < ApplicationController
         head :no_content
     end
 
+    #for '/users/:id/cinemeals':
+    def users_meals
+        @user = User.find(params[:id])
+        render json: @user.user_meals
+    end
+
     #for '/users/:id':
     def update
         user = User.find_by(id: params[:id])
         if user
             user.update!(user_params)
             render json: user
+        # if user
+        #     user_params.each do |cur_param|
+        #         if params[cur_param] != ''
+        #             user.update!(cur_param: params[cur_param])
+        #         end
+        #     render json: user
+        # end
         else
             render json: {error: "User not found"}, status: :not_found
         end
-        # token = request.headers['token']
-        # payload = decode_token(token)[0]
-        # if payload
-        #     user = User.find_by(id: params[:id])
-        #     user.update!(user_params)
-        #     if user.save
-        #         render json: user
-        #     else
-        #         render json: user.errors 
-        #     end
-        # else
-        #     render json: {error: "User not found"}, status: :not_found
-        # end
     end
 
     private

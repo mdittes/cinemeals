@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#show'
   post '/logout', to: 'users#logout'
   patch '/users/:id', to: 'users#update'
+  get '/users/:id/cinemeals', to: 'users#users_meals'
   get '/cinemeals', to: 'meals#index'
   get '/cinemeals/:id', to: 'meals#show'
   post '/cinemeals', to: 'meals#create'
