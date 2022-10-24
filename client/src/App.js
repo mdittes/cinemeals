@@ -22,13 +22,13 @@ function App() {
         fetch('http://localhost:3000/profile', {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json',
-                'token': `${token}`
+                'token': `${token}`,
+                'Content-Type': 'application/json'
             }
         })
         .then(res => res.json())
         .then(data => {
-            //console.log(data)
+            console.log(data)
             if(data.user){
                 setUser(data.user)
                 setIsLoggedIn(true)
@@ -51,7 +51,7 @@ function App() {
       <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/profile" element={<Profile user={user}  />} /> 
-            <Route path="/cinemeals" element={<Cinemeals />} />
+            <Route path="/cinemeals" element={<Cinemeals user={user}/>} />
             <Route path="/faves" element={<Faves />} />
             <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} />} />

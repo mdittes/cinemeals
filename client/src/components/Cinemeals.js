@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import CinemealCard from './CinemealCard';
 import {Modal, Button, Form, Dropdown} from 'semantic-ui-react';
 
-function Cinemeals() {
+function Cinemeals( {user} ) {
+    //console.log(user)
     const createMovieBody = {
         title: '',
         poster: '',

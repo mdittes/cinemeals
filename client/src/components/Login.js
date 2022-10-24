@@ -10,7 +10,7 @@ function Login({setIsLoggedIn}) {
     }
 
     let [loginData, setLoginData] = useState({...loginBody})
-    //let [user, setUser] = useState({username: ''})
+    let [user, setUser] = useState({username: ''})
 
     const navigate = useNavigate();
 
@@ -38,6 +38,7 @@ function Login({setIsLoggedIn}) {
         .then(data => {
             if(data.token){
                 localStorage.setItem('token', data.token)
+                //setUser(data.user)
                 //updateUserLogin(data.user)
                 setLoginData(loginBody)
                 setIsLoggedIn(true)

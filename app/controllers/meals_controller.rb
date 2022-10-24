@@ -13,14 +13,19 @@ class MealsController < ApplicationController
 
     def create 
         @movie = Movie.create!(movie_params)
-        debugger
-        @meal = Meal.create!(meals_params, movie_id: @movie.id)
+        @meal = Meal.create!(
+            name: meals_params[:name],
+            course: meals_params[:course],
+            image: meals_params[:image],
+            notes: meals_params[:notes],
+            movie_id: @movie.id,
+        )
         render json: @meal, status: :created
     end
 
     def update
         @meal = Meal.find(params[:id])
-        @meal.update!(meal_params)
+        @meal.update!(meals_params)
         render json: @meal
     end
 
