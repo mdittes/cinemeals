@@ -46,7 +46,7 @@ function Signup( {setIsLoggedIn} ) {
 
     return (
         //<h1>Signup</h1>
-        <Segment className='ui container center aligned' style={{maxWidth: 600, align: 'center'}}>
+        <Segment className='ui compact segment container center aligned' style={{maxWidth: 450, align: 'center'}}>
             <Header as='h2' color='teal' textAlign='center'>
                 <Icon name='film' /> Sign Up for CineMeals
             </Header>

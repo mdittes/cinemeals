@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Button, Form, Grid, Header, Image, Message, Segment, Divider, Icon } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Image, Message, Segment, Icon } from 'semantic-ui-react';
 import '../styles/Login.css';
 import {useNavigate} from 'react-router-dom';
 
@@ -47,11 +47,11 @@ function Login({setIsLoggedIn}) {
     }
 
     return (
-        <Segment className='ui container center aligned' style={{maxWidth: 1200, align: 'center'}}>
+        <Segment className='ui compact segment container center aligned' style={{maxWidth: 1200, align: 'center'}}>
             <Grid columns={2} stackable centered textAlign='center'>
-            <Divider vertical></Divider>
+            {/* <Divider vertical></Divider> */}
                 <Grid.Row verticalAlign='middle'>
-                    <Grid textAlign='center' style={{ height: '80vh' }} verticalAlign='middle'>
+                    <Grid textAlign='center' style={{ height: '60vh' }} verticalAlign='middle'>
                         <Grid.Column style={{ maxWidth: 450 }}>
                             <Header as='h2' color='teal' textAlign='center'>
                                 <Icon name='film' /> Sign In to Your Account
@@ -86,12 +86,12 @@ function Login({setIsLoggedIn}) {
                         </Grid.Column>
                     </Grid>
                     {/* <Grid> */}
-                        <Grid.Column >
-                            <Header icon textAlign="right">
+                        <Grid.Column className='ui center aligned grid'>
+                            <Header as='h1' icon textAlign="center">
                                 <Image src='https://i.imgur.com/dyVyJpx.jpeg' style={{width: 100, height:100}}/>
                                 Welcome to CineMeals
                             </Header>
-                            <div className="center aligned">A site for film and food pairings. Need date night ideas? Want to spruce up a family night? Find out what movie will pair best with that steak you prepared or which cocktail goes best with your next Netflix binge. Sign up and share your own CineMeals pairings today!</div>
+                            <div>A site for film and food pairings. Need date night ideas? Want to spruce up a family night? Find out what movie will pair best with that steak you prepared or which cocktail goes best with your next Netflix binge. Sign up and share your own CineMeals pairings today!</div>
                         </Grid.Column>
                     {/* </Grid> */}
                 </Grid.Row>
