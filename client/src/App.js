@@ -35,7 +35,7 @@ function App() {
     }
   }, [])
 
-  console.log(user)
+  //console.log(user)
   
   // function updateUserLogin(data) {
   //   setUser({username: ''})

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {Card, Image, Modal, Form, Button, Segment} from 'semantic-ui-react';
-import CinemealUserCard from './CinemealCard';
+import {Card, Image, Modal, Form, Button, Grid} from 'semantic-ui-react';
+import CinemealUserCard from './CinemealUserCard';
 
 function Profile( {user} ){
     const profileBody = {
@@ -68,24 +68,24 @@ function Profile( {user} ){
         })
     }
 
-    const renderUserMeals = userMeals.map(meal =>
+    const renderUserMeals = userMeals.map(userMeal =>
         <CinemealUserCard
-            meal={meal}
-            key={meal.id}
+            userMeal={userMeal}
+            key={userMeal.id}
         />
     )
 
     return (
         <>
-            <h1>Profile</h1>
-            <Segment className='ui compact segment container' style={{display: 'inline-block'}}>
+            <h2 >{curUser.username}'s Profile</h2>
                 {/* <span > */}
+            <Grid className='ui compact segment container' >
+                <Grid.Column width={4}>
             <Card>
                 <Card.Content>
                     <Card.Header>{curUser.username}</Card.Header>
                     <Image src={curUser.image} alt="profile picture"/>
                     <Modal
-                        
                         onClose={() => setOpen(false)}
                         onOpen={() => setOpen(true)}
                         open={open}
@@ -149,16 +149,22 @@ function Profile( {user} ){
                     </Modal>
                 </Card.Content>
             </Card>
+            </Grid.Column>
+            <Grid.Column width={10}>
             <div>
             <Button onClick={(e) => showUsersMeals(e)} >My CineMeals</Button>
+            <>
+            </>
             </div>
-            {/* </span> */}
-            <div style={{display:"flex", flexWrap:"wrap", width:"80vw", justifyContent:"center", alignContent:"center", gap:"2rem"}}>
+            <div >
                 {renderUserMeals}
             </div>
-            </Segment>
+            </Grid.Column>
+            </Grid>
+            {/* </span> */}
         </>
     )
 }
+//style={{display:"flex", flexWrap:"wrap", width:"80vw", justifyContent:"center", alignContent:"center", gap:"2rem"}}
 
 export default Profile;

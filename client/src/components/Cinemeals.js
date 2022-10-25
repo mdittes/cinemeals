@@ -75,9 +75,7 @@ function Cinemeals( {user} ) {
                 genre: selectedGenre,
                 ...createMealData,
                 course: selectedCourse
-            }
-                
-            )
+            })
         })
         .then(res => res.json())
         .then(data => {
@@ -138,8 +136,7 @@ function Cinemeals( {user} ) {
             <Modal.Header className="center aligned header">Create a CineMeal</Modal.Header>
             <Modal.Content>
                 <Form
-                    onChange={e => {movieChange(e); mealChange(e)}} //onChange={e => movieChange(e)}
-                    // onSubmit={e => createMovieSubmit(e)}
+                    onChange={e => {movieChange(e); mealChange(e)}}
                 >
                 <Form.Group unstackable widths={2}>
                 <Form.Field>
@@ -208,7 +205,7 @@ function Cinemeals( {user} ) {
                 <Form.Field>
                     <label>Notes</label>
                     <Form.TextArea
-                        placeholder='Want to include more info to complete the CineMeal experience? Link to a recipe, other activities to coordinate with the movie, or any other advice? Include it here!'
+                        placeholder='Want to include more info to complete the CineMeal experience? Have a recipe, other activities to coordinate with the movie, or any other advice? Include it here!'
                         name='notes'
                         value={createMealData.notes}
                     />
