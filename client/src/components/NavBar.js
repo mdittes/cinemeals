@@ -3,7 +3,7 @@ import {Menu, Button} from 'semantic-ui-react';
 import '../styles/NavBar.css';
 import { NavLink } from 'react-router-dom'
 
-function NavBar( {cur_user, isLoggedIn, setIsLoggedIn} ) {
+function NavBar( {isLoggedIn, setIsLoggedIn} ) {
     const [user, setUser] = useState({username: ''})
 
     function logout() {

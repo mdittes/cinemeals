@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post '/cinemeals', to: 'meals#create'
   patch '/cinemeals/:id', to: 'meals#update'
   delete '/cinemeals/:id', to: 'meals#destroy'
+  delete 'movies/:id', to: 'movies#destroy'
 
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end

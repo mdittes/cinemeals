@@ -14,8 +14,6 @@ function App() {
   //const [curUser, setCurUser] = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  //const navigate = useNavigate();
-
   useEffect(() => {
     let token = localStorage.getItem('token')
     if(token && !user.username){
@@ -28,15 +26,16 @@ function App() {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
-            if(data.user){
-                setUser(data.user)
+          // if(data.user){
+                console.log(data)
+                setUser(data)
                 setIsLoggedIn(true)
-                //navigate('/profile')
             }
-        })
+        )
     }
   }, [])
+
+  console.log(user)
   
   // function updateUserLogin(data) {
   //   setUser({username: ''})
@@ -47,7 +46,7 @@ function App() {
         <h1>
           <img height="50" width="50" src="https://i.imgur.com/dyVyJpx.jpeg"/>CineMeals
         </h1>
-      <NavBar cur_user={user} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/profile" element={<Profile user={user}  />} /> 

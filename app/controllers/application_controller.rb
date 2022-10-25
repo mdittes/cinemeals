@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
     #rescue_from User::NotAuthorized, with: :deny_access 
     rescue_from ActiveRecord::RecordNotFound, with: :not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_response
-    before_action :authorized 
+    # before_action :authorized 
     # skip_before_action :verify_authenticity_token
 
     def auth_header 
@@ -16,8 +16,7 @@ class ApplicationController < ActionController::API
     def decoded_token
         if auth_header
             token = auth_header
-             puts "decoded token", token
-
+            # puts "decoded token", token
             begin 
                 JWT.decode(token, 'secret', true, algorithm: 'HS256')
             rescue JWT::DecodeError
@@ -55,7 +54,7 @@ class ApplicationController < ActionController::API
     end
 
     def invalid_response(exception)
-        redirect_back_or_to root_url, alert: exception.record.errors.full_messages.to_sentence
+        render json: {message: exception.record.errors.full_messages.to_sentence}, status: :unauthorized
     end
 
 end

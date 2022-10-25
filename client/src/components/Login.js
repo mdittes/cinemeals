@@ -38,14 +38,16 @@ function Login({setIsLoggedIn}) {
         .then(data => {
             if(data.token){
                 localStorage.setItem('token', data.token)
-                //setUser(data.user)
                 //updateUserLogin(data.user)
                 setLoginData(loginBody)
                 setIsLoggedIn(true)
+                setUser(data.user)
                 navigate('/profile')
             }
         })
     }
+
+    //console.log(user)
 
     return (
         <Segment className='ui compact segment container center aligned' style={{maxWidth: 1200, align: 'center'}}>

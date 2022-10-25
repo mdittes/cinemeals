@@ -7,12 +7,10 @@ function Cinemeals( {user} ) {
     const createMovieBody = {
         title: '',
         poster: '',
-        genre: '',
     }
 
     const createMealBody = {
         name: '',
-        course: '',
         image: '',
         notes: ''
     }
@@ -72,9 +70,13 @@ function Cinemeals( {user} ) {
                 "token": `${token}`,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(
-                createMovieData,
-                createMealData
+            body: JSON.stringify({
+                ...createMovieData,
+                genre: selectedGenre,
+                ...createMealData,
+                course: selectedCourse
+            }
+                
             )
         })
         .then(res => res.json())
@@ -157,8 +159,8 @@ function Cinemeals( {user} ) {
                         fluid
                         selection
                         options={genreOptions}
-                        value={selectedGenre}
                         onChange={(e, data) => setSelectedGenre(data.value)}
+                        value={selectedGenre}
                     />
                     </Form.Input>
                 </Form.Field>
@@ -189,8 +191,8 @@ function Cinemeals( {user} ) {
                         fluid
                         selection
                         options={courseOptions}
-                        value={selectedCourse}
                         onChange={(e, data) => setSelectedCourse(data.value)}
+                        value={selectedCourse}
                     />
                     </Form.Input>
                 </Form.Field>

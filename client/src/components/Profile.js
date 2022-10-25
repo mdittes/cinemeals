@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {Card, Image, Modal, Form, Button} from 'semantic-ui-react';
-import CinemealCard from './CinemealCard';
+import {Card, Image, Modal, Form, Button, Segment} from 'semantic-ui-react';
+import CinemealUserCard from './CinemealCard';
 
 function Profile( {user} ){
     const profileBody = {
@@ -69,7 +69,7 @@ function Profile( {user} ){
     }
 
     const renderUserMeals = userMeals.map(meal =>
-        <CinemealCard
+        <CinemealUserCard
             meal={meal}
             key={meal.id}
         />
@@ -78,17 +78,19 @@ function Profile( {user} ){
     return (
         <>
             <h1>Profile</h1>
+            <Segment className='ui compact segment container' style={{display: 'inline-block'}}>
+                {/* <span > */}
             <Card>
                 <Card.Content>
                     <Card.Header>{curUser.username}</Card.Header>
-                    <Image src={curUser.image} />
+                    <Image src={curUser.image} alt="profile picture"/>
                     <Modal
                         
                         onClose={() => setOpen(false)}
                         onOpen={() => setOpen(true)}
                         open={open}
                         trigger={<Button padding="100" >Update Profile</Button>}
-                    >
+                        >
                         <Modal.Header className="center aligned header">Update Profile</Modal.Header>
                         <Modal.Content>
                         <Form onChange={e => profileChange(e)}  >
@@ -99,7 +101,7 @@ function Profile( {user} ){
                                     placeholder={curUser.username}
                                     name='username'
                                     value={profileData.username}
-                                />
+                                    />
                             </Form.Field>
                             <Form.Field>
                                 <label>Password</label>
@@ -108,7 +110,7 @@ function Profile( {user} ){
                                     name='password'
                                     type='password'
                                     value={profileData.password}
-                                />
+                                    />
                             </Form.Field>
                             <Form.Field>
                                 <label>Email Address</label>
@@ -116,7 +118,7 @@ function Profile( {user} ){
                                     placeholder={curUser.email}
                                     name='email'
                                     value={profileData.email}
-                                />
+                                    />
                             </Form.Field>
                             <Form.Field>
                                 <label>Profile Picture</label>
@@ -124,7 +126,7 @@ function Profile( {user} ){
                                     placeholder={curUser.image}
                                     name='image'
                                     value={profileData.image}
-                                />
+                                    />
                             </Form.Field>
                             {/* </Form.Group> */}
                             {/* <Button type='submit'>Update</Button> */}
@@ -147,10 +149,14 @@ function Profile( {user} ){
                     </Modal>
                 </Card.Content>
             </Card>
-            <Button onClick={(e) => showUsersMeals(e)}>My CineMeals</Button>
             <div>
+            <Button onClick={(e) => showUsersMeals(e)} >My CineMeals</Button>
+            </div>
+            {/* </span> */}
+            <div style={{display:"flex", flexWrap:"wrap", width:"80vw", justifyContent:"center", alignContent:"center", gap:"2rem"}}>
                 {renderUserMeals}
             </div>
+            </Segment>
         </>
     )
 }
