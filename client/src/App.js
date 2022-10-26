@@ -5,7 +5,7 @@ import Login from './components/Login';
 import Homepage from './components/Homepage'
 import Profile from './components/Profile'
 import Cinemeals from './components/Cinemeals'
-import Faves from './components/Faves'
+import Find from './components/Find'
 import Signup from './components/Signup'
 import {Routes, Route} from 'react-router-dom'
 
@@ -35,12 +35,6 @@ function App() {
     }
   }, [])
 
-  //console.log(user)
-  
-  // function updateUserLogin(data) {
-  //   setUser({username: ''})
-  // }
-
   return (
     <div className="App">
         <h1>
@@ -51,12 +45,10 @@ function App() {
             <Route path="/" element={<Homepage />} />
             <Route path="/profile" element={<Profile user={user}  />} /> 
             <Route path="/cinemeals" element={<Cinemeals user={user}/>} />
-            <Route path="/faves" element={<Faves />} />
+            <Route path="/find" element={<Find />} />
             <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} />} />
       </Routes>
-      {/* <Login updateUserLogin={updateUserLogin}/> */}
-
     </div>
   );
 }

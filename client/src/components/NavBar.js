@@ -29,7 +29,7 @@ function NavBar( {isLoggedIn, setIsLoggedIn} ) {
                 link as={NavLink} name='CineMeals' to="/cinemeals"
                 />
             <Menu.Item 
-                link as={NavLink} name='Faves' to="/faves"
+                link as={NavLink} name='Find' to="/find"
                 />
             <Menu.Item
                 link className="right item" name='Log In' as={NavLink} to="/login">

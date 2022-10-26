@@ -1,8 +1,13 @@
 .App {
   text-align: center;
+  /* background-color: rgb(190, 199, 194); */
+  margin: 0;
+  padding: 0
 }
 
-.Login {
+
+
+/* .Login {
   background-color: #F0EAD6;
 }
 
@@ -45,4 +50,4 @@ label {
   font-size: 14px;
   font-weight: 600;
   color: rgb(34, 34, 34);
-}
+} */

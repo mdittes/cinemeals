@@ -19,6 +19,9 @@ function Homepage() {
             <Button onClick={goToLogin}>Log In</Button>
             <Button onClick={goToSignup}>Sign Up</Button>
         </span>
+        <br />
+        <br />
+        <img src="https://media.tenor.com/kbeuTzyBXOEAAAAC/countdown-54321.gif"/>
         </>
     )
 }
