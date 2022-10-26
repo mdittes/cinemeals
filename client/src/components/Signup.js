@@ -7,7 +7,7 @@ function Signup( {setIsLoggedIn} ) {
         username: '',
         password: '',
         email: '',
-        image: ''
+        image: 'https://sites.cns.utexas.edu/sites/default/files/geometry_lab/files/default_person.jpg'
     }
 
     const navigate = useNavigate();

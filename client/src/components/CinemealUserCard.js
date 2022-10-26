@@ -99,7 +99,7 @@ function CinemealUserCard( {userMeal} ) {
     return (
         <div>
             <Item.Group divided>
-                <Item className='border-1' style={{border:"1px solid black", padding: "15px"}}>
+                <Item className='border-1' style={{border:"1px solid black", padding: "20px"}}>
                 <Item.Image src={userMeal.movie.poster} />
                 <Item.Content>
                     <Item.Header>{name}</Item.Header>
@@ -215,6 +215,8 @@ function CinemealUserCard( {userMeal} ) {
             </Modal.Actions>
         </Modal>
             <Button onClick={handleDeleteMeal}>Delete</Button>
+            <br />
+            <br />
         </div>
     )
 };

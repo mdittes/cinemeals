@@ -6,4 +6,8 @@ class Movie < ApplicationRecord
     #     self.order(:title)
     # end
 
+    # def by_genre 
+    #     self.all.genre
+    # end
+
 end

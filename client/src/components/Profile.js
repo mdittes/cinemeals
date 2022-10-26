@@ -85,6 +85,8 @@ function Profile( {user} ){
                 <Card.Content>
                     <Card.Header>{curUser.username}</Card.Header>
                     <Image src={curUser.image} alt="profile picture"/>
+                    <br />
+                    <br />
                     <Modal
                         onClose={() => setOpen(false)}
                         onOpen={() => setOpen(true)}
@@ -153,8 +155,8 @@ function Profile( {user} ){
             <Grid.Column width={10}>
             <div>
             <Button onClick={(e) => showUsersMeals(e)} >My CineMeals</Button>
-            <>
-            </>
+            <br />
+            <br />
             </div>
             <div >
                 {renderUserMeals}

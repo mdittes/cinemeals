@@ -11,7 +11,7 @@ function Cinemeals( {user} ) {
 
     const createMealBody = {
         name: '',
-        image: '',
+        image: 'https://p.kindpng.com/picc/s/79-798754_hoteles-y-centros-vacacionales-dish-placeholder-hd-png.png',
         notes: ''
     }
 

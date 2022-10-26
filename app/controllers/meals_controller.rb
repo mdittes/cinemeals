@@ -6,6 +6,11 @@ class MealsController < ApplicationController
         render json: @meals
     end
 
+    def by_course 
+        @meals = Meal.all
+        render json: @meals.meal_by_course
+    end
+
     def show 
         @meal = Meal.find(params[:id])
         render json: @meal
