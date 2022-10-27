@@ -3,7 +3,7 @@ class MealsController < ApplicationController
 
     def index 
         @meals = Meal.all 
-        render json: @meals
+        render json: @meals.alphabetical
     end
 
     def by_course 

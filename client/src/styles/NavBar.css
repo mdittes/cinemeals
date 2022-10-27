@@ -1,3 +1,12 @@
 .right_item {
     align-content: right;
 }
+
+.ui.menu {
+    background-color: #C9A9A6;
+    color: maroon;
+}
+
+.ui.menu.item {
+    color: maroon;
+}

@@ -43,7 +43,7 @@ function Find() {
         <>
             <br />
             <br />
-            <Grid className='ui compact segment container' >
+            <Grid className='ui compact segment container' style={{background: "#C9A9A6"}}>
                 <Grid.Column width={4}>
             <Menu vertical>
                 <Menu.Item>

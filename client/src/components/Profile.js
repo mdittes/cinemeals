@@ -77,9 +77,9 @@ function Profile( {user} ){
 
     return (
         <>
-            <h2 >{curUser.username}'s Profile</h2>
+            <h2 style={{color: '#C9A9A6'}}>{curUser.username}'s Profile</h2>
                 {/* <span > */}
-            <Grid className='ui compact segment container' >
+            <Grid className='ui compact segment container' style={{background: '#C9A9A6'}}>
                 <Grid.Column width={4}>
             <Card>
                 <Card.Content>

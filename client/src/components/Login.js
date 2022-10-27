@@ -47,16 +47,14 @@ function Login({setIsLoggedIn}) {
         })
     }
 
-    //console.log(user)
-
     return (
-        <Segment className='ui compact segment container center aligned' style={{maxWidth: 1200, align: 'center'}}>
+        <Segment className='ui compact segment container center aligned' style={{maxWidth: 1200, align: 'center', background: "#C9A9A6"}}>
             <Grid columns={2} stackable centered textAlign='center'>
             {/* <Divider vertical></Divider> */}
                 <Grid.Row verticalAlign='middle'>
                     <Grid textAlign='center' style={{ height: '60vh' }} verticalAlign='middle'>
                         <Grid.Column style={{ maxWidth: 450 }}>
-                            <Header as='h2' color='teal' textAlign='center'>
+                            <Header as='h2' color='maroon' textAlign='center'>
                                 <Icon name='film' /> Sign In to Your Account
                             </Header>
                             <Form size='large' onChange={e => loginChange(e)} onSubmit={e => loginSubmit(e)}>
@@ -78,7 +76,7 @@ function Login({setIsLoggedIn}) {
                                     name="password"
                                     value={loginData.password}
                                 />
-                                <Button color='teal' fluid size='large'>
+                                <Button color='maroon' fluid size='large'>
                                     Login
                                 </Button>
                                 </Segment>

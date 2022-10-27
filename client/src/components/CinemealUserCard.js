@@ -99,7 +99,7 @@ function CinemealUserCard( {userMeal} ) {
     return (
         <div>
             <Item.Group divided>
-                <Item className='border-1' style={{border:"1px solid black", padding: "20px"}}>
+                <Item className='border-1' style={{border:"1px solid black", padding: "20px", background: 'white'}}>
                 <Item.Image src={userMeal.movie.poster} />
                 <Item.Content>
                     <Item.Header>{name}</Item.Header>
@@ -210,7 +210,7 @@ function CinemealUserCard( {userMeal} ) {
                     type='submit'
                     onClick={(e) => {updateMealSubmit(e); setOpen(false)}}
                     positive
-                >Create
+                >Update
                 </Button>
             </Modal.Actions>
         </Modal>

@@ -46,8 +46,8 @@ function Signup( {setIsLoggedIn} ) {
 
     return (
         //<h1>Signup</h1>
-        <Segment className='ui compact segment container center aligned' style={{maxWidth: 450, align: 'center'}}>
-            <Header as='h2' color='teal' textAlign='center'>
+        <Segment className='ui compact segment container center aligned' style={{maxWidth: 450, align: 'center', background: '#C9A9A6'}}>
+            <Header as='h2' color='maroon' textAlign='center'>
                 <Icon name='film' /> Sign Up for CineMeals
             </Header>
             <Form success onChange={e => signupChange(e)} onSubmit={e => signupSubmit(e)} >

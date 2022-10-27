@@ -14,7 +14,7 @@ function Homepage() {
 
     return (
         <>
-        <h1>Welcome to CineMeals!</h1>
+        <h1 style={{color: 'white'}}>Welcome to CineMeals!</h1>
         <span>
             <Button onClick={goToLogin}>Log In</Button>
             <Button onClick={goToSignup}>Sign Up</Button>

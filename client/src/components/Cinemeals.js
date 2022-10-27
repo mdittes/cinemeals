@@ -126,7 +126,7 @@ function Cinemeals( {user} ) {
 
     return (
         <>
-        <h1>CineMeals</h1>
+        <h1 style={{color:'white'}}>CineMeals</h1>
         <Modal
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}

@@ -3,6 +3,10 @@ class Meal < ApplicationRecord
     belongs_to :movie
     has_many :tags, dependent: :destroy
 
+    def self.alphabetical
+        self.order(:name)
+    end
+    
     # def alphabetical_by_film
     #     self.movie.map do ||
             
@@ -13,23 +17,9 @@ class Meal < ApplicationRecord
         # meal.sort_by { |x| x[:movie][:title]}
     # end
 
-    # def meal_by_genre 
-    #     self.all.map do |movie|
-    #         movie.genre
-    #     end
-    # end
-
-    # def self.meal_by_course 
-    #     self.where(course: ["Entree"]
-    # end
-
     def self.meal_by_course(course)
         self.where(course: course)
     end
-
-    # def self.meal_by_genre(genre)
-    #     self.movie.where(genre: genre)
-    # end
 
     # def meal_by_genre(genre)
     #     meals = []

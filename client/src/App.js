@@ -37,8 +37,8 @@ function App() {
 
   return (
     <div className="App">
-        <h1>
-          <img height="50" width="50" src="https://i.imgur.com/dyVyJpx.jpeg"/>CineMeals
+        <h1 style={{color: 'white'}}>
+          <img height="50" width="50" src="https://i.imgur.com/kRrakiB.jpg"/>CineMeals
         </h1>
       <NavBar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>

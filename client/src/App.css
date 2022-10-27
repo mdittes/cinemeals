@@ -1,6 +1,12 @@
 .App {
   text-align: center;
   /* background-color: rgb(190, 199, 194); */
+  background-image: url("https://www.cherwell.org/wp-content/uploads/2016/11/IMG_0243.jpg");
+  height: 400vh;
+  min-width: 100%;
+  min-height: 100%;
+  background-size: cover;
+  background-position: center;
   margin: 0;
   padding: 0
 }
