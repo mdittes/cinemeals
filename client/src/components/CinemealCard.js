@@ -7,7 +7,7 @@ function CinemealCard( {meal} ) {
 
     return (
         <Item.Group divided>
-            <Item className='border-1' style={{border:"1px solid black", padding: "15px", background: 'white'}}>
+            <Item className='border-1' style={{border:"1px solid black", padding: "15px", background: 'white', width: "550px"}}>
             <Item.Image src={meal.movie.poster} />
             <Item.Content>
                 <Item.Header>{name}</Item.Header>

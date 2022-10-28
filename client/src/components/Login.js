@@ -54,7 +54,7 @@ function Login({setIsLoggedIn}) {
                 <Grid.Row verticalAlign='middle'>
                     <Grid textAlign='center' style={{ height: '60vh' }} verticalAlign='middle'>
                         <Grid.Column style={{ maxWidth: 450 }}>
-                            <Header as='h2' color='maroon' textAlign='center'>
+                            <Header as='h2' color='#800000' textAlign='center'>
                                 <Icon name='film' /> Sign In to Your Account
                             </Header>
                             <Form size='large' onChange={e => loginChange(e)} onSubmit={e => loginSubmit(e)}>
@@ -76,7 +76,7 @@ function Login({setIsLoggedIn}) {
                                     name="password"
                                     value={loginData.password}
                                 />
-                                <Button color='maroon' fluid size='large'>
+                                <Button color='#800000' fluid size='large'>
                                     Login
                                 </Button>
                                 </Segment>
@@ -90,7 +90,7 @@ function Login({setIsLoggedIn}) {
                         <Grid.Column className='ui center aligned grid'>
                             <Header as='h1' icon textAlign="center">
                                 <Image src='https://i.imgur.com/nhYn5kZ.jpg' style={{width: 100, height:100}}/>
-                                Welcome to CineMeals
+                                CineMeals
                             </Header>
                             <div style={{color: 'maroon'}}>A site for film and food pairings. Need date night ideas? Want to spruce up a family night? Find out what movie will pair best with that steak you prepared or which cocktail goes best with your next Netflix binge. Sign up and share your own CineMeals pairings today!</div>
                         </Grid.Column>

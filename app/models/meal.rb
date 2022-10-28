@@ -6,16 +6,6 @@ class Meal < ApplicationRecord
     def self.alphabetical
         self.order(:name)
     end
-    
-    # def alphabetical_by_film
-    #     self.movie.map do ||
-            
-        # self.includes(:movie).order[:title]
-        # self.movie.order[:title]
-        # meals = meals.sort_by{|meal| [meal['movie'], meal['title']]}
-        # meals
-        # meal.sort_by { |x| x[:movie][:title]}
-    # end
 
     def self.meal_by_course(course)
         self.where(course: course)
