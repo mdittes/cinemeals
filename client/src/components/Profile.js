@@ -40,10 +40,6 @@ function Profile( {user} ){
     function updateProfile(e) {
         e.preventDefault()
         let token = localStorage.getItem("token")
-        // let profileUpdate = {
-        //     ...profileData,
-        //     [e.target.name]: e.target.value
-        // }
         fetch(`http://localhost:3000/users/${curUser.id}`, {
             method: "PATCH",
             headers: {
@@ -63,7 +59,6 @@ function Profile( {user} ){
         fetch(`http://localhost:3000/users/${curUser.id}/cinemeals`)
         .then(res => res.json())
         .then(data => {
-            // console.log(data)
             setUserMeals(data)
         })
     }
@@ -141,7 +136,6 @@ function Profile( {user} ){
                                     padding="100"
                                     color='blue'
                                     type='submit'
-                                    // onClick={() => setOpen(false)}
                                     onClick={(e) => {updateProfile(e); setOpen(false)}}
                                     positive
                                     >Update
@@ -167,6 +161,5 @@ function Profile( {user} ){
         </>
     )
 }
-//style={{display:"flex", flexWrap:"wrap", width:"80vw", justifyContent:"center", alignContent:"center", gap:"2rem"}}
 
 export default Profile;

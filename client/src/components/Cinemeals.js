@@ -3,7 +3,6 @@ import CinemealCard from './CinemealCard';
 import {Modal, Button, Form, Dropdown} from 'semantic-ui-react';
 
 function Cinemeals( {user, isLoggedIn} ) {
-    //console.log(user)
     const createMovieBody = {
         title: '',
         poster: '',
@@ -82,23 +81,6 @@ function Cinemeals( {user, isLoggedIn} ) {
             console.log(data)
             setCreateMovieData(data)
             setCreateMealData(data)
-            // return(
-            //     fetch('http://localhost:3000/cinemeals', {
-            //         method: 'POST',
-            //         headers: {
-            //             "token": `${token}`,
-            //             'Content-Type': 'application/json'
-            //         },
-            //         body: JSON.stringify(
-            //             createMealData
-            //             )
-            //         })
-            //         .then(res => res.json())
-            //         .then(data => {
-            //             console.log(data)
-            //             setCreateMealData(data)
-            //         })
-            //         )
                 })
     }
 
@@ -132,7 +114,7 @@ function Cinemeals( {user, isLoggedIn} ) {
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             open={open}
-            trigger={<Button floated="right" padding="100" >Create a CineMeal</Button>}
+            trigger={<Button floated="left" padding="100" style={{margin: "35px"}}>Create a CineMeal</Button>}
         >
             <Modal.Header className="center aligned header">Create a CineMeal</Modal.Header>
             <Modal.Content>

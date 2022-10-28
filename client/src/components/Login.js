@@ -38,7 +38,6 @@ function Login({setIsLoggedIn}) {
         .then(data => {
             if(data.token){
                 localStorage.setItem('token', data.token)
-                //updateUserLogin(data.user)
                 setLoginData(loginBody)
                 setIsLoggedIn(true)
                 setUser(data.user)
