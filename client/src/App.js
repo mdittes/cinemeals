@@ -44,7 +44,7 @@ function App() {
       <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/profile" element={<Profile user={user}  />} /> 
-            <Route path="/cinemeals" element={<Cinemeals user={user}/>} />
+            <Route path="/cinemeals" element={<Cinemeals user={user} isLoggedIn={isLoggedIn}/>} />
             <Route path="/find" element={<Find />} />
             <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
             <Route path="/signup" element={<Signup setIsLoggedIn={setIsLoggedIn} />} />

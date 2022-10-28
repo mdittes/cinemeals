@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import CinemealCard from './CinemealCard';
 import {Modal, Button, Form, Dropdown} from 'semantic-ui-react';
 
-function Cinemeals( {user} ) {
+function Cinemeals( {user, isLoggedIn} ) {
     //console.log(user)
     const createMovieBody = {
         title: '',
@@ -127,6 +127,7 @@ function Cinemeals( {user} ) {
     return (
         <>
         <h1 style={{color:'white'}}>CineMeals</h1>
+        {isLoggedIn ? 
         <Modal
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
@@ -224,7 +225,7 @@ function Cinemeals( {user} ) {
                 >Create
                 </Button>
             </Modal.Actions>
-        </Modal>
+        </Modal> : ''}
             <div style={{display:"flex", flexWrap: "wrap", width:"100vw", alignItems:"center", justifyContent:"center"}}>
                 <div style={{display:"flex", flexWrap:"wrap", width:"80vw", justifyContent:"center", alignContent:"center", gap:"2rem"}}>
                     {/* <div> */}
