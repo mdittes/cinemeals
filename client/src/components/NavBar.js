@@ -22,10 +22,10 @@ function NavBar( {isLoggedIn, setIsLoggedIn} ) {
             <Menu.Item as={NavLink} to="/">
                 <img alt="logo" src="https://i.imgur.com/nhYn5kZ.jpg"/>
             </Menu.Item>
-            <Menu.Item 
+            {isLoggedIn ? <Menu.Item 
                 link as={NavLink} name='Profile' to="/profile" className="ui.menu.item"
-                />
-            <Menu.Item 
+                /> : ''}
+            <Menu.Item
                 link as={NavLink} name='CineMeals' to="/cinemeals"
                 />
             <Menu.Item 
